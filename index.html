@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>暗巷 BACKSTREET · M0</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #07090c; }
+    body { font-family: "Bahnschrift", "Segoe UI", system-ui, sans-serif; color: #dee1e6; }
+    canvas { display: block; }
+
+    /* ---- 起始遮罩 ---- */
+    #gate {
+      position: fixed; inset: 0; z-index: 50;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 22px; background: #07090c; cursor: pointer; text-align: center; padding: 24px;
+    }
+    #gate.hidden { display: none; }
+    #gate h1 {
+      font-size: clamp(48px, 10vw, 96px); font-weight: 700; letter-spacing: 0.02em;
+      line-height: 0.95; font-variation-settings: "wght" 700, "wdth" 75;
+    }
+    #gate h1 span { display: block; font-size: 0.36em; letter-spacing: 0.36em; color: #ff8a2b; margin-top: 0.55em; }
+    #gate .hint { font-family: Consolas, monospace; font-size: 13px; letter-spacing: 0.18em; color: #69717c; text-transform: uppercase; }
+    #gate .keys { font-family: Consolas, monospace; font-size: 12.5px; line-height: 2; color: #99a2ad; }
+    #gate .keys b { color: #ff8a2b; font-weight: 400; }
+    #gate .load { font-family: Consolas, monospace; font-size: 12px; color: #ff8a2b; letter-spacing: 0.14em; }
+
+    /* ---- HUD ---- */
+    #hud { position: fixed; inset: 0; z-index: 10; pointer-events: none; }
+    #hud.hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div id="gate">
+    <h1>暗巷<span>BACKSTREET</span></h1>
+    <div class="keys">
+      <b>WASD</b> 移动 &nbsp;·&nbsp; <b>SHIFT</b> 冲刺 &nbsp;·&nbsp; <b>CTRL</b> 蹲 &nbsp;·&nbsp; <b>SPACE</b> 跳<br>
+      <b>Q / E</b> 探头 &nbsp;·&nbsp; <b>左键</b> 开火 &nbsp;·&nbsp; <b>右键</b> 开镜/收镜 &nbsp;·&nbsp; <b>R</b> 换弹<br>
+      <b>P</b> 调参面板 &nbsp;·&nbsp; <b>K</b> 打击感总开关 &nbsp;·&nbsp; <b>F</b> 画质档位 &nbsp;·&nbsp; <b>ESC</b> 释放鼠标
+    </div>
+    <div class="load" id="gate-load">正在构建场景…</div>
+    <div class="hint" id="gate-hint" style="display:none">点击进入</div>
+  </div>
+  <div id="hud" class="hidden"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
